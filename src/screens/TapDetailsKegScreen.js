@@ -13,7 +13,7 @@ import { observer } from 'mobx-react';
 import flatNavigationParamsAndScreenProps from '../common/flatNavigationParamsAndScreenProps';
 import Container from '../common/Container';
 import LoaderBeverageDetails from '../components/BeverageDetailsLoader';
-import KegList from '../components/KegList';
+import KegsList from '../components/KegsList';
 import SectionHeader from '../common/SectionHeader';
 
 type InjectedProps = {|
@@ -21,7 +21,6 @@ type InjectedProps = {|
   navigation: Navigation,
 |};
 
-// todo loading on tap BeverageDetails
 @flatNavigationParamsAndScreenProps
 @observer
 class TapDetailsKegScreen extends InjectedComponent<InjectedProps> {
@@ -56,7 +55,7 @@ class TapDetailsKegScreen extends InjectedComponent<InjectedProps> {
         <ScrollView>
           <LoaderBeverageDetails loader={this._currentBeverageLoader} />
           <SectionHeader title="Past Kegs" />
-          <KegList
+          <KegsList
             queryOptions={{
               filters: [DAOApi.createFilter('tap/id').equals(tapId)],
               orderBy: [{ column: 'id', direction: 'desc' }],
